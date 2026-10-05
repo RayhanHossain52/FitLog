@@ -7,7 +7,7 @@ const Library = async () => {
     const data = await res.json();
 
     return (
-        <section className="container mx-auto mt-18">
+        <section className="mt-18 scroll-mt-24" id="library">
 
             <h2 className="text-2xl font-extrabold uppercase text-white">
                 The Library

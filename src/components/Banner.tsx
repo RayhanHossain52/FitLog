@@ -3,8 +3,8 @@ import banner from "@/assets/banner.png";
 
 const Banner = () => {
     return (
-        <section className="container mx-auto mt-12">
-            <div className="px-20 py-30 flex min-h-[430px] items-center justify-between gap-10 rounded-2xl bg-[#15181d] px-10 py-12">
+        <section className="mt-12">
+            <div className="px-20 py-30 flex min-h-[430px] items-center justify-between gap-10 rounded-2xl bg-[#15181d]">
 
                 {/* Left Content */}
                 <div className="max-w-2xl">
@@ -28,9 +28,12 @@ const Banner = () => {
                     </p>
 
                     {/* Button */}
-                    <button className="btn mt-8 border-0 bg-[#c8ff00] px-8 text-black hover:bg-[#b5e600]">
+                    <a
+                        href="#library"
+                        className="btn mt-8 border-0 bg-[#c8ff00] px-8 text-black hover:bg-[#b5e600]"
+                    >
                         Explore Workouts
-                    </button>
+                    </a>
 
                 </div>
 

@@ -3,6 +3,7 @@ import { WorkoutTypes } from "@/types/WorkoutTypes";
 import { CiClock2 } from "react-icons/ci";
 import { PiFireSimpleFill } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
+import Link from "next/link";
 
 type WorkoutCardProps = {
     workout: WorkoutTypes;
@@ -10,7 +11,7 @@ type WorkoutCardProps = {
 
 const WorkoutCard = ({ workout }: WorkoutCardProps) => {
     return (
-        <div className="overflow-hidden rounded-xl border border-[#25282e] bg-[#15171c]">
+        <Link href={`/workout/${workout.id}`} className="overflow-hidden rounded-xl border border-[#25282e] bg-[#15171c] hover:border-[#c8ff00] cursor-pointer">
 
             {/* Image */}
             <figure className="h-[250px] w-full">
@@ -69,7 +70,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
 
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
