@@ -1,16 +1,25 @@
-'use client'
+"use client";
+
 import { WorkoutTypes } from "@/types/WorkoutTypes";
 import { createContext, ReactNode, useState } from "react";
 
-// use reactCotext
-export const ExerciseContext = createContext<any>({});
+type ExerciseContextType = {
+    addPlan: WorkoutTypes[];
+    setAddPlan: React.Dispatch<React.SetStateAction<WorkoutTypes[]>>;
+    saveLater: WorkoutTypes[];
+    setSavelater: React.Dispatch<React.SetStateAction<WorkoutTypes[]>>;
+    removeFromPlan: (id: number) => void;
+    removeFromSaved: (id: number) => void;
+};
 
+export const ExerciseContext = createContext<ExerciseContextType>(
+    {} as ExerciseContextType
+);
 
-// Main content
 const WorkoutContext = ({ children }: { children: ReactNode }) => {
 
-const [addPlan, setAddPlan] = useState<WorkoutTypes[]>([]);
-const [saveLater, setSavelater] = useState<WorkoutTypes[]>([]);
+    const [addPlan, setAddPlan] = useState<WorkoutTypes[]>([]);
+    const [saveLater, setSavelater] = useState<WorkoutTypes[]>([]);
 
     const removeFromPlan = (id: number) => {
         setAddPlan((prev) => {
@@ -31,11 +40,13 @@ const [saveLater, setSavelater] = useState<WorkoutTypes[]>([]);
         setSavelater,
         removeFromPlan,
         removeFromSaved
-    }
+    };
 
-    return <ExerciseContext.Provider value={shareData} >
-        {children}
-    </ExerciseContext.Provider>
+    return (
+        <ExerciseContext.Provider value={shareData}>
+            {children}
+        </ExerciseContext.Provider>
+    );
 };
 
 export default WorkoutContext;

@@ -14,7 +14,7 @@ const MyPlanPage = () => {
 
     const [activeTab, setActiveTab] = useState<ActiveTab>("plan");
 
-    const currentList = activeTab === "plan" ? addPlan : saveLater;
+    const currentList= activeTab === "plan" ? addPlan : saveLater;
 
     const totalMinutes = currentList.reduce(
         (total, exercise) => total + exercise.duration, 0);
