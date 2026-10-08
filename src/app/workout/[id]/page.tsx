@@ -2,6 +2,7 @@ import AddPlanButton from "@/components/AddPlanButton";
 import SaveLater from "@/components/SaveLater";
 import { WorkoutTypes } from "@/types/WorkoutTypes";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 type Props = {
     params: Promise<{
@@ -14,7 +15,9 @@ const page = async ({ params }: Props) => {
 
     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
     const workout: WorkoutTypes = await res.json();
-
+    if (!workout) {
+        notFound();
+    }
     return (
         <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 items-stretch gap-8 px-4 pb-16 sm:px-5 lg:mt-20 lg:grid-cols-2 lg:gap-10">
 

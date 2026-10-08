@@ -37,7 +37,6 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
                     ))}
                 </div>
 
-                {/* Workout Name */}
                 <h2 className="text-lg font-extrabold uppercase text-white">
                     {workout.name}
                 </h2>

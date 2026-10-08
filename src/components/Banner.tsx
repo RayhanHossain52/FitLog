@@ -1,5 +1,6 @@
 import Image from "next/image";
 import banner from "@/assets/banner.png";
+import { FaArrowRight } from "react-icons/fa";
 
 const Banner = () => {
     return (
@@ -27,7 +28,8 @@ const Banner = () => {
                         href="#library"
                         className="btn mt-8 border-0 bg-[#c8ff00] px-8 text-black hover:bg-[#b5e600]"
                     >
-                        Explore Workouts
+                        BROWSE WORKOUTS
+                        <FaArrowRight />
                     </a>
 
                 </div>

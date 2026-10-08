@@ -41,7 +41,7 @@ const Navbar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                         >
                             <li><Link href="/">Workouts</Link></li>
-                            <li><Link href="/MyPlan">My Plan</Link></li>
+                            <li><Link href="/my-plan">My Plan</Link></li>
                         </ul>
                     </div>
 
@@ -72,8 +72,8 @@ const Navbar = () => {
                         </Link>
 
                         <Link
-                            href="/MyPlan"
-                            className={`rounded-xl px-4 py-2 text-sm font-semibold ${pathname === "/MyPlan"
+                            href="/my-plan"
+                            className={`rounded-xl px-4 py-2 text-sm font-semibold ${pathname === "/my-plan"
                                 ? "bg-[#191c21] text-[#c8ff00]"
                                 : "text-gray-400 hover:text-white"
                                 }`}
@@ -88,7 +88,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-3 sm:gap-6 px-1 sm:px-5 py-2 sm:py-3">
 
                         <Link
-                            href="/MyPlan"
+                            href="/my-plan"
                             className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-white"
                         >
                             <span>Plan</span>
@@ -99,7 +99,7 @@ const Navbar = () => {
                         </Link>
 
                         <Link
-                            href="/MyPlan"
+                            href="/my-plan"
                             className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm font-semibold text-white"
                         >
                             <span>Saved</span>
