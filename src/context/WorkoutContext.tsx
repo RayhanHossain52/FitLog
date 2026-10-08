@@ -1,4 +1,5 @@
 'use client'
+import { WorkoutTypes } from "@/types/WorkoutTypes";
 import { createContext, ReactNode, useState } from "react";
 
 // use reactCotext
@@ -8,8 +9,8 @@ export const ExerciseContext = createContext<any>({});
 // Main content
 const WorkoutContext = ({ children }: { children: ReactNode }) => {
 
-    const [addPlan, setAddPlan] = useState([]);
-    const [saveLater, setSavelater] = useState([]);
+const [addPlan, setAddPlan] = useState<WorkoutTypes[]>([]);
+const [saveLater, setSavelater] = useState<WorkoutTypes[]>([]);
 
     const removeFromPlan = (id: number) => {
         setAddPlan((prev) => {

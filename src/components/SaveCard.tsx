@@ -16,18 +16,16 @@ const SaveCard = ({ exercise }: { exercise: WorkoutTypes }) => {
     const { removeFromSaved } = useContext(ExerciseContext);
 
     return (
-        <div className="flex items-center gap-4 rounded-2xl border border-[#292c32] bg-[#15181d] p-4">
+        <div className="flex flex-col gap-4 rounded-2xl border border-[#292c32] bg-[#15181d] p-4 sm:flex-row sm:items-center">
 
-            {/* Image */}
             <Image
                 src={exercise.image}
                 alt={exercise.name}
                 width={135}
                 height={80}
-                className="h-20 w-[135px] rounded-xl object-cover"
+                className="h-20 w-full rounded-xl object-cover sm:w-[135px]"
             />
 
-            {/* Information */}
             <div className="flex-1">
 
                 <h2 className="text-base font-extrabold uppercase text-white">
@@ -38,8 +36,7 @@ const SaveCard = ({ exercise }: { exercise: WorkoutTypes }) => {
                     {exercise.equipment}
                 </p>
 
-                {/* Workout information */}
-                <div className="mt-2 flex items-center gap-4 text-xs text-gray-400">
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-gray-400 sm:gap-4">
 
                     <span className="flex items-center gap-1">
                         <FaRegClock className="text-[#c8ff00]" />
@@ -60,12 +57,11 @@ const SaveCard = ({ exercise }: { exercise: WorkoutTypes }) => {
 
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-2 sm:gap-5">
 
                 <Link href={`/workout/${exercise.id}`}>
                     <button
-                        className="cursor-pointer rounded-full border border-[#343943] px-4 py-2 text-xs text-white hover:bg-[#20242c]"
+                        className="cursor-pointer rounded-full border border-[#343943] px-3 py-2 text-xs text-white hover:bg-[#20242c] sm:px-4"
                     >
                         View Details
                     </button>
@@ -94,7 +90,7 @@ const SaveCard = ({ exercise }: { exercise: WorkoutTypes }) => {
 
             </div>
 
-        </div >
+        </div>
     );
 };
 

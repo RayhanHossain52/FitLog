@@ -7,11 +7,12 @@ import { WorkoutTypes } from "@/types/WorkoutTypes";
 import Link from "next/link";
 import { useContext, useState } from "react";
 
+type ActiveTab = "plan" | "saved";
+
 const MyPlanPage = () => {
     const { addPlan, saveLater } = useContext(ExerciseContext);
 
-
-    const [activeTab, setActiveTab] = useState("plan");
+    const [activeTab, setActiveTab] = useState<ActiveTab>("plan");
 
     const currentList = activeTab === "plan" ? addPlan : saveLater;
 
@@ -20,8 +21,7 @@ const MyPlanPage = () => {
     const totalCalories = currentList.reduce(
         (total, exercise) => total + exercise.caloriesBurned, 0);
 
-    const [ sortby, setSortby ] = useState<"time" | "calories" | "rating">("time");
-
+    const [sortby, setSortby] = useState<"time" | "calories" | "rating">("time");
 
     const sortList = (list: WorkoutTypes[]) => {
         const sortListarr = [...list];
@@ -40,70 +40,59 @@ const MyPlanPage = () => {
     const sortedList = sortList(currentList);
 
     return (
-        <main className="px-5 py-10">
+        <main className="px-4 py-8 sm:px-5 sm:py-10">
 
-            {/* Header */}
             <div>
-                <h1 className="text-3xl font-extrabold uppercase text-white">
+                <h1 className="text-2xl font-extrabold uppercase text-white sm:text-3xl">
                     My Plan
                 </h1>
 
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-xs text-gray-500 sm:text-sm">
                     Cap of five lifts for today. Finish them, then load more.
                 </p>
             </div>
 
+            <div className="mt-6 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#292c32] bg-[#15181d] sm:grid-cols-3">
 
-            {/* Total Informations */}
-            <div className="mt-6 grid grid-cols-3 overflow-hidden rounded-2xl border border-[#292c32] bg-[#15181d]">
-
-                {/* Exercises */}
-                <div className="px-6 py-7">
+                <div className="px-6 py-5 sm:py-7">
                     <p className="text-xs text-gray-500">
                         Exercises
                     </p>
 
-                    <p className="mt-1 text-4xl font-extrabold text-[#c8ff00]">
+                    <p className="mt-1 text-3xl font-extrabold text-[#c8ff00] sm:text-4xl">
                         {currentList.length}
                     </p>
                 </div>
 
-
-                {/* Minutes */}
-                <div className="border-l border-[#292c32] px-6 py-7">
+                <div className="border-t border-[#292c32] px-6 py-5 sm:border-l sm:border-t-0 sm:py-7">
                     <p className="text-xs text-gray-500">
                         Minutes
                     </p>
 
-                    <p className="mt-1 text-4xl font-extrabold text-white">
+                    <p className="mt-1 text-3xl font-extrabold text-white sm:text-4xl">
                         {totalMinutes}
                     </p>
                 </div>
 
-
-                {/* Calories */}
-                <div className="border-l border-[#292c32] px-6 py-7">
+                <div className="border-t border-[#292c32] px-6 py-5 sm:border-l sm:border-t-0 sm:py-7">
                     <p className="text-xs text-gray-500">
                         Calories
                     </p>
 
-                    <p className="mt-1 text-4xl font-extrabold text-white">
+                    <p className="mt-1 text-3xl font-extrabold text-white sm:text-4xl">
                         {totalCalories}
                     </p>
                 </div>
 
             </div>
 
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-            {/* Tab Buttons & Sorting */}
-            <div className="mt-7 flex items-center justify-between">
-
-                {/* Button Tabs */}
-                <div className="flex rounded-xl border border-[#292c32] bg-[#15181d] p-1">
+                <div className="flex w-fit rounded-xl border border-[#292c32] bg-[#15181d] p-1">
 
                     <button
                         onClick={() => setActiveTab("plan")}
-                        className={`rounded-lg px-5 py-2 text-xs font-medium transition-all ${activeTab === "plan"
+                        className={`rounded-lg px-4 py-2 text-xs font-medium transition-all sm:px-5 ${activeTab === "plan"
                             ? "bg-[#20242c] text-white shadow-sm"
                             : "text-[#8b919c] hover:text-white"
                             }`}
@@ -113,7 +102,7 @@ const MyPlanPage = () => {
 
                     <button
                         onClick={() => setActiveTab("saved")}
-                        className={`rounded-lg px-5 py-2 text-xs font-medium transition-all ${activeTab === "saved"
+                        className={`rounded-lg px-4 py-2 text-xs font-medium transition-all sm:px-5 ${activeTab === "saved"
                             ? "bg-[#20242c] text-white shadow-sm"
                             : "text-[#8b919c] hover:text-white"
                             }`}
@@ -123,7 +112,6 @@ const MyPlanPage = () => {
 
                 </div>
 
-                {/* Sort */}
                 <div className="flex items-center gap-2">
 
                     <p className="text-xs text-gray-500">
@@ -134,7 +122,8 @@ const MyPlanPage = () => {
                         <select
                             value={sortby}
                             onChange={(e) => setSortby(e.target.value as "time" | "calories" | "rating")}
-                            className="select appearance-none rounded-md">
+                            className="select appearance-none rounded-md"
+                        >
                             <option value={"time"}>Duration</option>
                             <option value={"calories"}>Calories</option>
                             <option value={"rating"}>Rating</option>
@@ -145,15 +134,11 @@ const MyPlanPage = () => {
 
             </div>
 
-
-
-
-            {/* Workout List / Empty State */}
             <div className="mt-5">
 
                 {currentList.length === 0 ? (
 
-                    <div className="flex min-h-[280px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-[#292c32] py-30">
+                    <div className="flex min-h-[280px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-[#292c32] px-5 py-20 text-center sm:py-30">
 
                         <h2 className="text-lg font-extrabold uppercase text-white">
                             Nothing Here Yet
@@ -196,12 +181,7 @@ const MyPlanPage = () => {
 
                 )}
 
-
             </div>
-
-
-
-
 
         </main>
     );

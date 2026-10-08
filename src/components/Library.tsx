@@ -4,7 +4,7 @@ import WorkoutCard from "./WorkoutCard";
 
 const Library = async () => {
     const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-    const data = await res.json();
+    const data: WorkoutTypes[] = await res.json();
 
     return (
         <section className="mt-18 scroll-mt-24" id="library">
@@ -18,7 +18,7 @@ const Library = async () => {
             </p>
 
             <div className="mt-6 grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
-                {data.map((workout: WorkoutTypes) => (
+                {data.map((workout) => (
                     <WorkoutCard
                         key={workout.id}
                         workout={workout}
