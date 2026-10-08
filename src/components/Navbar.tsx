@@ -1,7 +1,13 @@
+"use client";
 import logo from "@/assets/logo.png"
+import { ExerciseContext } from "@/context/WorkoutContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 const Navbar = () => {
+
+    const { addPlan, saveLater } = useContext(ExerciseContext);
+
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-[#292c32] bg-[#0d0f12] py-1">
             <div className="navbar mx-auto max-w-320 bg-[#0d0f12] shadow-none">
@@ -46,17 +52,32 @@ const Navbar = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="navbar-end gap-6">
+                <div className="navbar-end">
+                    <div className="flex items-center gap-8 px-5 py-3">
 
-                    <Link href="/MyPlan">
-                        <span>Plan</span>
-                    </Link>
+                        <Link
+                            href="/MyPlan"
+                            className="flex items-center gap-2 text-sm font-semibold text-white"
+                        >
+                            <span>Plan</span>
 
-                    <Link href="/MyPlan">
-                        <span>Saved</span>
-                    </Link>
+                            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c8ff00] px-1.5 text-xs font-bold text-black">
+                                {addPlan.length}
+                            </span>
+                        </Link>
 
+                        <Link
+                            href="/MyPlan"
+                            className="flex items-center gap-2 text-sm font-semibold text-white"
+                        >
+                            <span>Saved</span>
 
+                            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-gray-400 px-1.5 text-xs">
+                                {saveLater.length}
+                            </span>
+                        </Link>
+
+                    </div>
                 </div>
             </div>
         </nav>
