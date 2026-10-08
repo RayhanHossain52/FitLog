@@ -17,7 +17,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
             <figure className="h-[250px] w-full">
                 <Image
                     src={workout.image}
-                    alt={workout.name}
+                    alt="Exercise Photo"
                     width={740}
                     height={400}
                     className="h-full w-full object-cover"

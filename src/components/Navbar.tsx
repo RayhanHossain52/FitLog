@@ -4,7 +4,7 @@ import Link from "next/link";
 const Navbar = () => {
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-[#292c32] bg-[#0d0f12] py-1">
-               <div className="navbar mx-auto max-w-320 bg-[#0d0f12] shadow-none">
+            <div className="navbar mx-auto max-w-320 bg-[#0d0f12] shadow-none">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -32,14 +32,14 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <div className="flex items-center gap-2">
                         <Link
-                            href="/workouts"
+                            href="/"
                             className="rounded-xl bg-[#191c21] px-4 py-2 text-sm font-semibold text-[#c8ff00]"
                         >
                             Workouts
                         </Link>
 
                         <Link
-                            href="/my-plan"
+                            href="/MyPlan"
                             className="rounded-xl px-4 py-2 text-sm font-semibold text-gray-400 hover:text-white"
                         >
                             My Plan
@@ -48,13 +48,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-6">
 
-                    <div className="flex items-center gap-2">
+                    <Link href="/MyPlan">
                         <span>Plan</span>
-                    </div>
+                    </Link>
 
-                    <div className="flex items-center gap-2">
+                    <Link href="/MyPlan">
                         <span>Saved</span>
-                    </div>
+                    </Link>
+
 
                 </div>
             </div>

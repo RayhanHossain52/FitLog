@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
+import WorkoutContext from "@/context/WorkoutContext";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,16 +24,26 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-screen bg-[#0d0f12] text-white">
-        <Navbar />
-        <div className="min-h-full flex flex-col container mx-auto max-w-320">
-          {children}
-        </div>
-        <Footer />
-      </body>
-    </html>
+    lang="en"
+    className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+>
+    <body className="min-h-screen flex flex-col bg-[#0d0f12] text-white">
+
+        <WorkoutContext>
+
+            <Navbar />
+
+            <div className="flex-1 w-full container mx-auto max-w-320">
+                {children}
+            </div>
+
+            <Footer />
+
+            <ToastContainer />
+
+        </WorkoutContext>
+
+    </body>
+</html>
   );
 }

@@ -1,5 +1,8 @@
+
+import AddPlanButton from "@/components/AddPlanButton";
+import SaveLater from "@/components/SaveLater";
 import Image from "next/image";
-import {FaRegBookmark, FaCalendarPlus} from "react-icons/fa6";
+import Link from "next/link";
 
 type Props = {
     params: Promise<{
@@ -14,16 +17,15 @@ const page = async ({ params }: Props) => {
     const workout = await res.json();
 
     return (
-        <div className="mx-auto mt-20 grid max-w-6xl grid-cols-1 gap-10 px-5 pb-16 lg:grid-cols-2">
-
+        <div className="mx-auto mt-20 grid max-w-6xl grid-cols-1 items-stretch gap-10 px-5 pb-16 lg:grid-cols-2">
             {/* IMAGE */}
-            <div className="overflow-hidden rounded-xl">
+            <div className="h-full overflow-hidden rounded-2xl">
                 <Image
                     src={workout.image}
                     alt={workout.name}
                     width={588}
                     height={735}
-                    className="h-full max-h-[735px] w-full object-cover"
+                    className="h-full w-full object-cover"
                 />
             </div>
 
@@ -39,7 +41,7 @@ const page = async ({ params }: Props) => {
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                    {workout.muscleGroups.map((muscle) => (
+                    {workout.muscleGroups.map((muscle: string) => (
                         <span
                             key={muscle}
                             className="rounded-full bg-[#c8ff00] px-3 py-1 text-[10px] font-bold uppercase text-black"
@@ -166,15 +168,9 @@ const page = async ({ params }: Props) => {
                 {/* Buttons */}
                 <div className="mt-7 flex flex-wrap gap-3">
 
-                    <button className="btn border-0 bg-[#c8ff00] text-black hover:bg-[#b5e600]">
-                        <FaCalendarPlus />
-                        Add to today's plan
-                    </button>
+                    <AddPlanButton workout={workout}></AddPlanButton>
 
-                    <button className="btn border border-[#343943] bg-transparent text-gray-300 hover:bg-[#191c21] hover:text-white">
-                        <FaRegBookmark />
-                        Save for later
-                    </button>
+                    <SaveLater workout={workout}></SaveLater>
 
                 </div>
 
